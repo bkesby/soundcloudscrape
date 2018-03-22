@@ -1,0 +1,22 @@
+version: '3'
+services:
+  database:
+    image: postgres:10.3
+    container_name: database
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=soundcloud
+    ports:
+      - 5432:5432
+    volumes:
+      - ./database/data:/var/lib/postgresql/data
+      - ./database/files:/tmp
+  scrapy:
+    build: ./scrapy-soundcloud
+    container_name: scrapy
+    depends_on: 
+      - database
+    volumes:
+      - ./scrapy-soundcloud/scrape_app:/scrape_app
+    tty: true
