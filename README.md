@@ -1,16 +1,6 @@
 # soundcloudscraper
 # Runs test scrape.
-docker-compose up -d
-
-docker exec -it scrapy /bin/bash
-
-cd scrape_app
-
-python
-
-import scripts
-
-scripts.crawl('test')
+docker-compose up
 
 # View database through exposed port 5432 or:
 
