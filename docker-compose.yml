@@ -19,4 +19,5 @@ services:
       - database
     volumes:
       - ./scrapy-soundcloud/scrape_app:/scrape_app
-    tty: true
+    working_dir: /scrape_app
+    command: python run.py
